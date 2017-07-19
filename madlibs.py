@@ -1,6 +1,6 @@
 """A madlib game that compliments its users."""
 
-from random import choice
+from random import choice, randint
 
 from flask import Flask, render_template, request
 
@@ -57,9 +57,9 @@ def show_madlib():
     noun = request.args.get("noun")
     adjective = request.args.get("adjective")
 
-    return render_template("madlibs.html", name1=name, color=color, 
+    x = randint(1, 3)
+    return render_template("madlibs{}.html".format(x), name1=name, color=color, 
                             noun=noun, adjective=adjective)
-
 
 if __name__ == '__main__':
     # Setting debug=True gives us error messages in the browser and also
